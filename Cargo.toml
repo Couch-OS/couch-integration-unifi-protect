@@ -1,0 +1,42 @@
+[package]
+name = "couch-unifi-protect"
+version = "0.1.0-pre1"
+edition = "2021"
+license = "GPL-3.0-or-later"
+description = "Standalone UniFi Protect camera integration package for Couch"
+repository = "https://github.com/Couch-OS/couch-integration-unifi-protect"
+
+[dependencies]
+# One immutable Couch revision owns the package protocol and SDK contract.
+couch-plugin = { git = "https://github.com/Couch-OS/couch.git", rev = "aa45c0d8d5c7540695acfeb8cdf72e52ae5c997d", features = ["protocol-4-preview"] }
+couch-sdk = { git = "https://github.com/Couch-OS/couch.git", rev = "aa45c0d8d5c7540695acfeb8cdf72e52ae5c997d", features = ["tls"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+ureq = { version = "=3.4.1", default-features = false, features = ["rustls"] }
+url = "2"
+zeroize = "1"
+sha2 = "0.10"
+base64 = "0.22"
+webrtc-srtp = "=0.17.2"
+webpki-roots = "1"
+rustls = { version = "0.23", default-features = false, features = ["ring", "std", "tls12"] }
+
+[dev-dependencies]
+couch-plugin = { git = "https://github.com/Couch-OS/couch.git", rev = "aa45c0d8d5c7540695acfeb8cdf72e52ae5c997d", features = ["protocol-4-preview", "testing"] }
+couch-sdk = { git = "https://github.com/Couch-OS/couch.git", rev = "aa45c0d8d5c7540695acfeb8cdf72e52ae5c997d", features = ["tls", "testing"] }
+rcgen = "0.13"
+
+[features]
+default = ["media-transport"]
+media-transport = []
+
+[[bin]]
+name = "couch-plugin-unifi-protect"
+path = "src/bin/couch-plugin-unifi-protect.rs"
+
+[profile.release]
+opt-level = "s"
+lto = true
+codegen-units = 1
+panic = "abort"
+strip = true

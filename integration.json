@@ -1,0 +1,11 @@
+{
+  "schema": 1,
+  "protocol_version": 4,
+  "id": "unifi-protect",
+  "tier": "preview",
+  "synthetic": false,
+  "cargo_manifest": "Cargo.toml",
+  "cargo_package": "couch-unifi-protect",
+  "binary": "couch-plugin-unifi-protect",
+  "manifest": "plugin.json"
+}

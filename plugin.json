@@ -1,0 +1,38 @@
+{
+  "protocol_version": 4,
+  "min_core_protocol_version": 4,
+  "id": "unifi-protect",
+  "label": "UniFi Protect",
+  "version": "0.1.0_pre1",
+  "executable": "bin/couch-plugin-unifi-protect",
+  "capabilities": [],
+  "settings": [
+    {
+      "id": "address",
+      "label": "NVR IP address",
+      "kind": "text",
+      "required": true
+    },
+    {
+      "id": "api_key",
+      "label": "Protect API key",
+      "kind": "secret",
+      "required": true
+    }
+  ],
+  "supports_inputs": false,
+  "children": [
+    {
+      "kind": "camera",
+      "label": "UniFi Protect camera",
+      "device_kind": "camera",
+      "component": "camera",
+      "capabilities": []
+    }
+  ],
+  "pairing": {
+    "required": true,
+    "max_seconds": 30
+  },
+  "keep_alive": true
+}
